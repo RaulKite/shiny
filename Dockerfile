@@ -1,6 +1,6 @@
 FROM r-base:latest
 
-MAINTAINER Winston Chang "winston@rstudio.com"
+MAINTAINER Raul Sanchez "raul@um.es"
 
 RUN apt-get update && apt-get install -y \
     sudo \
@@ -24,6 +24,17 @@ RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubu
     rm -f version.txt ss-latest.deb
 
 RUN R -e "install.packages(c('shiny', 'rmarkdown'), repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('shiny', 'dygraphs'), repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('shiny', 'xts'), repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('shiny', 'data.table'), repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('shiny', 'maptools'), repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('shiny', 'gsw'), repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('shiny', 'devtools'), repos='http://cran.rstudio.com/')"
+RUN R -e "devtools::install_github('rstudio/leaflet')"
+
+
+
+
 
 RUN cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
 
