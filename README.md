@@ -41,7 +41,7 @@ If you want to protect the web, you should use SHINY\_USER and  SHINY\_PASSWORD 
 docker run -d -p 80:3838 \
     -v /srv/shinyapps/:/srv/shiny-server/ \
     -v /srv/shinylog/:/var/log/ \
-    -e SHINY_USER=user 
+    -e SHINY_USER=user \
     -e SHINY_PASSWORD=password \
     raulkite/shiny 
 ```
